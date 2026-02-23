@@ -1,0 +1,11 @@
+# .pre-commit-config.yaml
+repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    # Ruff 버전 (원하는 버전으로 고정 가능)
+    rev: v0.3.0
+    hooks:
+      # Linter 실행 (오류 수정 및 코드 정리)
+      - id: ruff
+        args: [ --fix ]
+      # Formatter 실행 (Black 대용)
+      - id: ruff-format
