@@ -1,0 +1,27 @@
+# for문을 2번 사용하는 대신, abs를 사용하여 두 수의 차를 처리하면 가독성 향상
+# 성능 향상을 원할 경우 리스트 컴프리헨션 활용
+#
+# 1. 인덱스 리스트를 한 번에 생성: [1, 2, ..., N-1, N, N-1, ..., 1]
+# indices = list(range(1, N)) + list(range(N, 0, -1))
+
+# 2. 리스트 컴프리헨션과 join을 사용해 결과 문자열을 한 덩어리로 만듦
+# result = "\n".join(star(i, N) for i in indices)
+
+# 3. 단 한 번만 출력 (속도 가장 빠름)
+# sys.stdout.write(result + "\n")
+
+
+import sys
+
+N = int(sys.stdin.readline())
+
+
+def star(index: int, max: int) -> str:
+    blank = " " * (max - index)
+    star = "*" * (2 * index - 1)
+    return blank + star + "\n"
+
+
+for i in range(1, 2 * N):
+    current_index = N - abs(N - i)
+    sys.stdout.write(star(current_index, N))
